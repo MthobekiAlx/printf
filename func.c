@@ -90,7 +90,7 @@ int print_d(va_list arg)
 }
 /**
  * print_i - prints integer
- * @args: integer argument
+ * @arg: integer argument
  * Return: the decimal function
  */
 

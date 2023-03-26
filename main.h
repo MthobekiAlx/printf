@@ -1,13 +1,21 @@
 #ifndef MAIN_H
-#define MAIN__H
+#define MAIN_H
+
 #include <stdio.h>
 #include <stdarg.h>
 
+/**
+ * struct specifier - struct specifier
+ * @valid: the valid character.
+ * @p: the functions associated.
+ *
+ */
+
 typedef struct specifier
 {
-	char*vaild;
+	char *valid;
 	int (*p)(va_list arg);
-}spec;
+} spec;
 
 int _printf(const char *format, ...);
 
