@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * get_spec - look for the specifier
+ * get_func - look for the specifier
  * @x: variable to the function
  * Return: function
  */
-int (*get_spec(char x))(va_list)
+int (*get_func(char x))(va_list)
 {
 	int i = 0;
 	spec arr[] = {
@@ -24,3 +24,4 @@ int (*get_spec(char x))(va_list)
 	}
 	return (NULL);
 }
+

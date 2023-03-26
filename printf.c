@@ -1,35 +1,53 @@
-#include <stdio.h>
 #include <stdarg.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include "main.h"
 #include <stddef.h>
-
 /**
- * _printf - a function that produces output 
- * @format: string
- * Return: number of string output
+ * _printf - recreates the printf function
+ * @format: string with format specifier
+ * Return: number of characters printed
  */
 int _printf(const char *format, ...)
 {
-int x, i = 0;
-int (*n)(va_list);
-va_list arg;
-
-va_start(arg, format);
-x = 0;
-
-while (format != NULL && format[x] != '\0')
-{
-	if (format[x] == '%')
+	if (format != NULL)
 	{
-		n = get_spec(format[x + 1]);
-		i = n(arg);
-		i += 2;
+		int count = 0, i;
+		int (*m)(va_list);
+		va_list args;
+
+		va_start(args, format);
+		i = 0;
+		if (format[0] == '%' && format[1] == '\0')
+			return (-1);
+		while (format != NULL && format[i] != '\0')
+		{
+			if (format[i] == '%')
+			{
+				if (format[i + 1] == '%')
+				{
+					count += _putchar(format[i]);
+					i += 2;
+				}
+				else
+				{
+					m = get_func(format[i + 1]);
+					if (m)
+						count += m(args);
+					else
+						count = _putchar(format[i]) + _putchar(format[i + 1]);
+					i += 2;
+				}
+			}
+			else
+			{
+				count += _putchar(format[i]);
+				i++;
+			}
+		}
+		va_end(args);
+		return (count);
 	}
-	_putchar(format[x]);
-	x++;
+	return (-1);
 }
-_putchar('\n');
-va_end(arg);
-return(i);
-}
+
