@@ -3,28 +3,28 @@
 #include <stdarg.h>
 /**
  * print_c - prints character
- * @args: character argument
+ * @arg: character argument
  * Return: number of characters
  */
-int print_c(va_list args)
+int print_c(va_list arg)
 {
 	int c;
 
-	c = va_arg(args, int);
+	c = va_arg(arg, int);
 	return (_putchar(c));
 }
 /**
  * print_s - prints a string
- * @args: string  argument
+ * @arg: string  argument
  * Return: number of characters
  */
-int print_s(va_list args)
+int print_s(va_list arg)
 {
 	int i, count = 0;
 	char *str;
 
 	i = 0;
-	str = va_arg(args, char*);
+	str = va_arg(arg, char*);
 	if (str == NULL)
 		str = "(null)";
 	while (str[i] != '\0')
@@ -37,16 +37,16 @@ int print_s(va_list args)
 }
 /**
  * print_percent - pass the percent sing
- * @args: string  argument
+ * @arg: string  argument
  * Return: return the percent sing
  *
  */
-int print_percent(va_list args)
+int print_percent(va_list arg)
 {
 	char *str;
 
 	str = "%";
-	if (va_arg(args, int) == *str)
+	if (va_arg(arg, int) == *str)
 	{
 		return (*str);
 	}
@@ -55,17 +55,17 @@ int print_percent(va_list args)
 
 /**
  * print_d - prints a decimal
- * @args: decimal argument
+ * @arg: decimal argument
  * Return: counter
  */
-int print_d(va_list args)
+int print_d(va_list arg)
 {
 
 	unsigned int absolute, aux, countnum, count;
 	int n;
 
 	count = 0;
-	n = va_arg(args, int);
+	n = va_arg(arg, int);
 		if (n < 0)
 		{
 			absolute = (n * -1);
@@ -94,7 +94,7 @@ int print_d(va_list args)
  * Return: the decimal function
  */
 
-int print_i(va_list args)
+int print_i(va_list arg)
 {
-	return (print_d(args));
+	return (print_d(arg));
 }
